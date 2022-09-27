@@ -1,0 +1,20 @@
+Ray Tracer README file - CAP4730 Assignment 1
+---------------------------------------------
+
+Compilation Instructions for Visual Studio 2019:
+
+1. Install GLFW, GLEW, and GLM to a location on your computer.
+2. Add RayTracer.cpp to an empty Visual Studio 2019 project.
+3. Go into the project Properties -> C/C++ -> General; inside of the Additional Include Directories, add the directories at which your GLFW, GLEW, and GLM files are located and link to the equivalent /include files. 
+4. Go into Linker -> General; inside of the Additional Library Directories, add the directories at which your GLFW, GLEW, and GLM and link to the equivalent /lib files. 
+5. Go into Linker -> Input; inside of the Additional Dependencies, add the dependencies opengl32.lib, glfw3.lib, and glew32s.lib .
+6. Put the glew32.dll and glfw3.dll files into the directory with your RayTracer file.
+7. Within the Visual Studio 2019 Package manager, you can also run the following commands to include the appropriate glfw and glew packages:
+	Install-Package glfw
+	Install-Package glew
+7. You can now either run the Ray Tracer by compiling and running the code in Visual Studio 2019 using the Local Windows Debugger, or you can enter your command prompt, cd to the Directory with your RayTracer file, and run the commands:
+	g++ -lglew -lglfw RayTracer.cpp
+	./a.out
+
+Once the program is running, you can change the camera from Orthographic to Perspective or vice versa by hitting the Z button.
+
