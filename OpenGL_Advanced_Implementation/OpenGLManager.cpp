@@ -1,7 +1,6 @@
 //GLFW Window creation and some load functions acquired from LearnOpenGL.com
 //Read Project Report for detailed information about Acknowledgments
 #define GLFW_INCLUDE_NONE
-#define GLEW_STATIC
 #define STB_IMAGE_IMPLEMENTATION
 #include "OpenGLManager.h"
 
