@@ -49,6 +49,7 @@ Marissa Manley:
 - Halo lighting effect
 - Bloom lighting effect
 - Dynamic(Input) HDR modifications  
+
 Katherine Teng:
 - Walking Camera  
 
