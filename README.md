@@ -11,9 +11,9 @@ faces of all loaded objects are triangles, the texture coordinates must be trian
 textures are loaded in using stb_image functions.  
 
 With Textures  
-<img width="340" alt="image" src="https://user-images.githubusercontent.com/58527286/193133462-82868b62-f29c-4380-b4b6-1cded6b21d4d.png">
+<img width="340" alt="image" src="https://user-images.githubusercontent.com/58527286/193133462-82868b62-f29c-4380-b4b6-1cded6b21d4d.png">  
 Without Textures  
-<img width="340" alt="image" src="https://user-images.githubusercontent.com/58527286/193133677-851401da-a987-41f6-a1d3-8e0ad9ceca54.png">
+<img width="340" alt="image" src="https://user-images.githubusercontent.com/58527286/193133677-851401da-a987-41f6-a1d3-8e0ad9ceca54.png">  
 
 
 3. Materials - functioning properly
@@ -22,7 +22,11 @@ simulate different types of materials. The ambient, diffuse, specular, and shini
 values can be modified. Inside the main fragment shader, a Materials struct is used to
 organize the four modifiable values.
 
-### MATIERALS PICTURES
+Low Diffuse, High Specular  
+<img width="344" alt="image" src="https://user-images.githubusercontent.com/58527286/193133856-3561f5c6-e02a-48da-8080-402a9c36fc87.png">  
+High Diffuse, Low Specular  
+<img width="344" alt="image" src="https://user-images.githubusercontent.com/58527286/193133940-bfd54689-51ae-4903-882f-076539b432d1.png">  
+
 
 4. Bloom Effect - functioning properly
 The bloom effect is applied to all light objects, and can be toggled on or off by pressing
