@@ -45,12 +45,14 @@ identical shader buffer subtracts from the blurred bloom shader buffer.
 ### HALO PICTURES
 
 ### Responsibility Distribution
-Katherine Teng:
-- Walking Camera
 Marissa Manley:
 - Halo lighting effect
-- Dynamic(Input) HDR modifications
-*The texture, material, and bloom implementations were worked on equally.
+- Bloom lighting effect
+- Dynamic(Input) HDR modifications  
+Katherine Teng:
+- Walking Camera  
+
+*The textures and materials were worked on equally.
 
 ### Learning Outcomes
 We determined early on in our project partnership that we both were fascinated by bloom and
