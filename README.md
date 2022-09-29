@@ -1,11 +1,11 @@
 # OpenGL_Advanced_Implementation
 
 ### Features
-1. **Walking camera** - functioning properly
+1. **Walking camera** - functioning properly  
 Camera has the ability to move around in the 3D scene by pressing the WASD keys as
 well as look around by moving the mouse cursor.
 
-2. **Textures** - functioning properly
+2. **Textures** - functioning properly  
 Texture images can be dynamically loaded in and mapped onto objects. Because the
 faces of all loaded objects are triangles, the texture coordinates must be triangular. The
 textures are loaded in using stb_image functions.  
@@ -16,7 +16,7 @@ Without Textures
 <img width="340" alt="image" src="https://user-images.githubusercontent.com/58527286/193133677-851401da-a987-41f6-a1d3-8e0ad9ceca54.png">  
 
 
-3. **Materials** - functioning properly
+3. **Materials** - functioning properly  
 Different material properties can be dynamically added on to objects and tweaked to
 simulate different types of materials. The ambient, diffuse, specular, and shininess
 values can be modified. Inside the main fragment shader, a Materials struct is used to
@@ -28,7 +28,7 @@ High Diffuse, Low Specular
 <img width="342" alt="image" src="https://user-images.githubusercontent.com/58527286/193134713-00905ff7-9450-4552-be1f-e7e74ac364bb.png">  
 
 
-4. **Bloom Effect** - functioning properly
+4. **Bloom Effect** - functioning properly  
 The bloom effect is applied to all light objects, and can be toggled on or off by pressing
 the Spacebar. The amount of exposure in the scene can also be increased by holding
 down Q or decreased by holding down E. The bloom effect is created by use of a
@@ -44,7 +44,7 @@ Bloom Lighting
 <img width="344" alt="image" src="https://user-images.githubusercontent.com/58527286/193134219-5d782a37-8659-4067-b6d9-5bbffb38f0be.png">  
 
 
-5. **Halo Effect** - functioning 95% correctly
+5. **Halo Effect** - functioning 95% correctly  
 The halo effect is applied to all light objects, and can be toggled on or off by pressing H,
 given that bloom is enabled. The halo effect is created via use of an identical, pre-blur
 bloom lighting shader. To generate the blur effect only around the edge of the lights to
