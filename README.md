@@ -10,10 +10,10 @@ Texture images can be dynamically loaded in and mapped onto objects. Because the
 faces of all loaded objects are triangles, the texture coordinates must be triangular. The
 textures are loaded in using stb_image functions.  
 
-With Textures
+With Textures  
 <img width="340" alt="image" src="https://user-images.githubusercontent.com/58527286/193133462-82868b62-f29c-4380-b4b6-1cded6b21d4d.png">
-Without Textures
-<img width="339" alt="image" src="https://user-images.githubusercontent.com/58527286/193133566-b1a883e2-5807-4d5b-b085-658bc8835e52.png">
+Without Textures  
+<img width="340" alt="image" src="https://user-images.githubusercontent.com/58527286/193133677-851401da-a987-41f6-a1d3-8e0ad9ceca54.png">
 
 
 3. Materials - functioning properly
