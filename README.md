@@ -28,7 +28,7 @@ High Diffuse, Low Specular
 <img width="342" alt="image" src="https://user-images.githubusercontent.com/58527286/193134713-00905ff7-9450-4552-be1f-e7e74ac364bb.png">  
 
 
-4. Bloom Effect - functioning properly
+4. **Bloom Effect** - functioning properly
 The bloom effect is applied to all light objects, and can be toggled on or off by pressing
 the Spacebar. The amount of exposure in the scene can also be increased by holding
 down Q or decreased by holding down E. The bloom effect is created by use of a
@@ -44,7 +44,7 @@ Bloom Lighting
 <img width="344" alt="image" src="https://user-images.githubusercontent.com/58527286/193134219-5d782a37-8659-4067-b6d9-5bbffb38f0be.png">  
 
 
-5. Halo Effect - functioning 95% correctly
+5. **Halo Effect** - functioning 95% correctly
 The halo effect is applied to all light objects, and can be toggled on or off by pressing H,
 given that bloom is enabled. The halo effect is created via use of an identical, pre-blur
 bloom lighting shader. To generate the blur effect only around the edge of the lights to
