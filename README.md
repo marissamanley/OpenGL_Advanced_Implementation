@@ -1,6 +1,6 @@
 # OpenGL_Advanced_Implementation
 
-## Features
+### Features
 1. Walking camera - functioning properly
 Camera has the ability to move around in the 3D scene by pressing the WASD keys as
 well as look around by moving the mouse cursor.
@@ -8,9 +8,13 @@ well as look around by moving the mouse cursor.
 2. Textures - functioning properly
 Texture images can be dynamically loaded in and mapped onto objects. Because the
 faces of all loaded objects are triangles, the texture coordinates must be triangular. The
-textures are loaded in using stb_image functions.
+textures are loaded in using stb_image functions.  
 
-### TEXTURE PICTURES
+With Textures
+<img width="340" alt="image" src="https://user-images.githubusercontent.com/58527286/193133462-82868b62-f29c-4380-b4b6-1cded6b21d4d.png">
+Without Textures
+<img width="339" alt="image" src="https://user-images.githubusercontent.com/58527286/193133566-b1a883e2-5807-4d5b-b085-658bc8835e52.png">
+
 
 3. Materials - functioning properly
 Different material properties can be dynamically added on to objects and tweaked to
