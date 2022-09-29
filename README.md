@@ -23,9 +23,9 @@ values can be modified. Inside the main fragment shader, a Materials struct is u
 organize the four modifiable values.
 
 Low Diffuse, High Specular  
-<img width="344" alt="image" src="https://user-images.githubusercontent.com/58527286/193133856-3561f5c6-e02a-48da-8080-402a9c36fc87.png">  
+<img width="341" alt="image" src="https://user-images.githubusercontent.com/58527286/193134625-7d5cc141-3e1b-4645-be41-a8162a1e3512.png">  
 High Diffuse, Low Specular  
-<img width="344" alt="image" src="https://user-images.githubusercontent.com/58527286/193133940-bfd54689-51ae-4903-882f-076539b432d1.png">  
+<img width="342" alt="image" src="https://user-images.githubusercontent.com/58527286/193134713-00905ff7-9450-4552-be1f-e7e74ac364bb.png">  
 
 
 4. Bloom Effect - functioning properly
