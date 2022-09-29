@@ -1,11 +1,11 @@
 # OpenGL_Advanced_Implementation
 
 ### Features
-1. Walking camera - functioning properly
+1. **Walking camera** - functioning properly
 Camera has the ability to move around in the 3D scene by pressing the WASD keys as
 well as look around by moving the mouse cursor.
 
-2. Textures - functioning properly
+2. **Textures** - functioning properly
 Texture images can be dynamically loaded in and mapped onto objects. Because the
 faces of all loaded objects are triangles, the texture coordinates must be triangular. The
 textures are loaded in using stb_image functions.  
@@ -16,7 +16,7 @@ Without Textures
 <img width="340" alt="image" src="https://user-images.githubusercontent.com/58527286/193133677-851401da-a987-41f6-a1d3-8e0ad9ceca54.png">  
 
 
-3. Materials - functioning properly
+3. **Materials** - functioning properly
 Different material properties can be dynamically added on to objects and tweaked to
 simulate different types of materials. The ambient, diffuse, specular, and shininess
 values can be modified. Inside the main fragment shader, a Materials struct is used to
@@ -38,7 +38,11 @@ overlay the bloom effect on light-effected objects. The only bug involves the sp
 lighting - the color of the specular reflections are white and do not reflect the color of the
 light.
 
-### BLOOM PICTURES
+Normal Lighting  
+<img width="340" alt="image" src="https://user-images.githubusercontent.com/58527286/193134156-d59e5a7e-3512-4a36-b4e5-184ce8ec3417.png">  
+Bloom Lighting  
+<img width="344" alt="image" src="https://user-images.githubusercontent.com/58527286/193134219-5d782a37-8659-4067-b6d9-5bbffb38f0be.png">  
+
 
 5. Halo Effect - functioning 95% correctly
 The halo effect is applied to all light objects, and can be toggled on or off by pressing H,
@@ -50,7 +54,11 @@ by which the halo effect is created - when staring at two bloom lights head-on s
 one overlaps the other, the outputted color is incorrect due to the method by which the
 identical shader buffer subtracts from the blurred bloom shader buffer.
 
-### HALO PICTURES
+Only Bloom Lighting  
+<img width="341" alt="image" src="https://user-images.githubusercontent.com/58527286/193134304-919e783a-c9e4-4406-a346-9ef1ced573c6.png">  
+Bloom with Halo Lighting  
+<img width="346" alt="image" src="https://user-images.githubusercontent.com/58527286/193134380-f20feaaf-667d-4f4b-afe3-73eb69ca56cf.png">  
+
 
 ### Responsibility Distribution
 Marissa Manley:
