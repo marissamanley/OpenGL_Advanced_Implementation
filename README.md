@@ -1,4 +1,4 @@
-# OpenGL_Advanced_Implementation
+# OpenGL Bloom Implementation
 
 ### Features
 1. **Walking camera** - functioning properly  
