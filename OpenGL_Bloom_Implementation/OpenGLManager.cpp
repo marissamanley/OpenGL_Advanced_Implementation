@@ -1,4 +1,4 @@
-//GLFW Window creation and some load functions acquired from LearnOpenGL.com
+//GLFW Window creation, camera class, and shader class acquired from LearnOpenGL.com
 //Read Project Report for detailed information about Acknowledgments
 #define GLFW_INCLUDE_NONE
 #define STB_IMAGE_IMPLEMENTATION
@@ -38,12 +38,10 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 
 float yaw = -90.0f;
 float pitch = 0.0f;
-void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
-{
+void mouse_callback(GLFWwindow* window, double xposIn, double yposIn) {
     float xpos = static_cast<float>(xposIn);
     float ypos = static_cast<float>(yposIn);
-    if (firstMouse)
-    {
+    if (firstMouse) {
         lastX = xpos;
         lastY = ypos;
         firstMouse = false;
@@ -88,8 +86,7 @@ void OpenGLManager::Start() {
 #endif
 
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
-    if (window == NULL)
-    {
+    if (window == NULL) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return;
@@ -100,8 +97,7 @@ void OpenGLManager::Start() {
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return;
     }
@@ -121,8 +117,7 @@ void OpenGLManager::Start() {
     glBindFramebuffer(GL_FRAMEBUFFER, hdrFBO);
     unsigned int colorBuffers[3];
     glGenTextures(3, colorBuffers);
-    for (unsigned int i = 0; i < 3; i++)
-    {
+    for (unsigned int i = 0; i < 3; i++) {
         glBindTexture(GL_TEXTURE_2D, colorBuffers[i]);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -147,8 +142,7 @@ void OpenGLManager::Start() {
     unsigned int pingpongColorbuffers[2];
     glGenFramebuffers(2, pingpongFBO);
     glGenTextures(2, pingpongColorbuffers);
-    for (unsigned int i = 0; i < 2; i++)
-    {
+    for (unsigned int i = 0; i < 2; i++) {
         glBindFramebuffer(GL_FRAMEBUFFER, pingpongFBO[i]);
         glBindTexture(GL_TEXTURE_2D, pingpongColorbuffers[i]);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
@@ -184,8 +178,7 @@ void OpenGLManager::Start() {
     shaderBloomFinal.setInt("bloomBlur", 1);
     shaderBloomFinal.setInt("noBlur", 2);
 
-    while (!glfwWindowShouldClose(window))
-    {
+    while (!glfwWindowShouldClose(window)) {
         float currentFrame = static_cast<float>(glfwGetTime());
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
@@ -254,8 +247,7 @@ void OpenGLManager::Start() {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, containerTexture);
 
-        for (unsigned int i = 0; i < lightPositions.size(); i++)
-        {
+        for (unsigned int i = 0; i < lightPositions.size(); i++) {
             model = glm::mat4(1.0f);
             model = glm::translate(model, glm::vec3(lightPositions[i]));
             model = glm::scale(model, glm::vec3(0.25f));
@@ -268,8 +260,7 @@ void OpenGLManager::Start() {
         bool horizontal = true, first_iteration = true;
         unsigned int amount = 10;
         shaderBlur.use();
-        for (unsigned int i = 0; i < amount; i++)
-        {
+        for (unsigned int i = 0; i < amount; i++) {
             glBindFramebuffer(GL_FRAMEBUFFER, pingpongFBO[horizontal]);
             shaderBlur.setInt("horizontal", horizontal);
             glBindTexture(GL_TEXTURE_2D, first_iteration ? colorBuffers[1] : pingpongColorbuffers[!horizontal]);
@@ -293,8 +284,7 @@ void OpenGLManager::Start() {
         shaderBloomFinal.setFloat("exposure", exposure);
         renderQuad();
 
-        if (changed)
-        {
+        if (changed) {
             std::cout << "Scene Settings: " << std::endl;
             std::cout << "--------------- " << std::endl;
             std::cout << "Halo toggled (Press H): " << (halo ? "on" : "off") << " | Bloom toggled (Press Space): " << (bloom ? "on" : "off") << " | Exposure(Q and E): " << exposure << std::endl;
@@ -323,10 +313,9 @@ void OpenGLManager::Start() {
 unsigned int cubeVAO = 0;
 unsigned int cubeVBO = 0;
 float vertices[200000];
-void OpenGLManager::renderCube()
-{
-    if (cubeVAO == 0)
-    {
+// Function that creates the cube objects
+void OpenGLManager::renderCube() {
+    if (cubeVAO == 0) {
         const char* fileName = "data/cube.obj";
 
         std::vector<glm::vec3> vertPos;
@@ -337,32 +326,27 @@ void OpenGLManager::renderCube()
         std::string l = "";
         std::string prefix = "";
 
-        while (std::getline(file, l))
-        {
+        while (std::getline(file, l)) {
             s.clear();
             s.str(l);
             s >> prefix;
 
-            if (prefix == "v")
-            {
+            if (prefix == "v") {
                 float pos[3] = { 0,0,0 };
                 s >> pos[0] >> pos[1] >> pos[2];
                 vertPos.push_back(glm::vec3(pos[0], pos[1], pos[2]));
             }
-            else if (prefix == "vn")
-            {
+            else if (prefix == "vn") {
                 float pos[3] = { 0,0,0 };
                 s >> pos[0] >> pos[1] >> pos[2];
                 vertNorms.push_back(glm::vec3(pos[0], pos[1], pos[2]));
             }
-            else if (prefix == "f")
-            {
+            else if (prefix == "f") {
                 int vertNums[5] = { 0,0,0,0,0 };
                 s >> vertNums[0];
                 if (s.peek() == ' ')
                     s >> vertNums[1] >> vertNums[2];
-                else
-                {
+                else {
                     s.ignore(30, ' ');
                     s >> vertNums[1];
                     s.ignore(30, ' ');
@@ -371,8 +355,7 @@ void OpenGLManager::renderCube()
                 }
                 vertFaces.push_back(glm::vec3(vertNums[0], vertNums[2], vertNums[1]));
                 s >> vertNums[3];
-                if (vertNums[3] != 0)
-                {
+                if (vertNums[3] != 0) {
                     vertFaces.push_back(glm::vec3(vertNums[0], vertNums[3], vertNums[2]));
                     s >> vertNums[4];
                     if (vertNums[4] != 0)
@@ -383,8 +366,7 @@ void OpenGLManager::renderCube()
 
         int j = 0;
         int k = 0;
-        for (unsigned int i = 0; i < vertFaces.size(); i++)
-        {
+        for (unsigned int i = 0; i < vertFaces.size(); i++) {
             glm::vec3 vecA = vertPos[vertFaces[i].z - 1] - vertPos[vertFaces[i].x - 1];
             glm::vec3 vecB = vertPos[vertFaces[i].y - 1] - vertPos[vertFaces[i].x - 1];
             glm::vec3 result = cross(vecA, vecB);
@@ -445,10 +427,9 @@ void OpenGLManager::renderCube()
 
 unsigned int quadVAO = 0;
 unsigned int quadVBO;
-void OpenGLManager::renderQuad()
-{
-    if (quadVAO == 0)
-    {
+// Function that generates the plane
+void OpenGLManager::renderQuad() {
+    if (quadVAO == 0) {
         float quadVertices[] = {
             // positions        // texture Coords
             -1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
@@ -471,8 +452,8 @@ void OpenGLManager::renderQuad()
     glBindVertexArray(0);
 }
 
-void OpenGLManager::processInput(GLFWwindow* window)
-{
+// Function that manages all user input 
+void OpenGLManager::processInput(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 
@@ -488,45 +469,38 @@ void OpenGLManager::processInput(GLFWwindow* window)
         cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 
 
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !bloomKeyPressed)
-    {
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !bloomKeyPressed) {
         bloom = !bloom;
         bloomKeyPressed = true;
         changed = true;
     }
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_RELEASE)
-    {
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_RELEASE) {
         bloomKeyPressed = false;
     }
 
-    if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS && !haloKeyPressed)
-    {
+    if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS && !haloKeyPressed) {
         halo = !halo;
         haloKeyPressed = true;
         changed = true;
 
     }
-    if (glfwGetKey(window, GLFW_KEY_H) == GLFW_RELEASE)
-    {
+    if (glfwGetKey(window, GLFW_KEY_H) == GLFW_RELEASE) {
         haloKeyPressed = false;
     }
 
-    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
-    {
+    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
         changed = true;
         if (exposure > 0.0f)
             exposure -= 0.001f;
         else
             exposure = 0.0f;
     }
-    else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
-    {
+    else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
         changed = true;
         exposure += 0.001f;
     }
 
-    if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS && matType.compare("Chrome") != 0)
-    {
+    if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS && matType.compare("Chrome") != 0) {
         matType = "Chrome";
         amb = glm::vec3(0.04f);
         diff = glm::vec3(0.3f);
@@ -534,8 +508,7 @@ void OpenGLManager::processInput(GLFWwindow* window)
         shin = 512.0f;
         changed = true;
     }
-    else if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS && matType.compare("Plastic") != 0)
-    {
+    else if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS && matType.compare("Plastic") != 0) {
         changed = true;
         matType = "Plastic";
         amb = glm::vec3(0.04f);
@@ -543,8 +516,7 @@ void OpenGLManager::processInput(GLFWwindow* window)
         spec = glm::vec3(0.7f);
         shin = 128.0f;
     }
-    else if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS && matType.compare("Rubber") != 0)
-    {
+    else if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS && matType.compare("Rubber") != 0) {
         changed = true;
         matType = "Rubber";
         amb = glm::vec3(0.04f);
@@ -552,49 +524,41 @@ void OpenGLManager::processInput(GLFWwindow* window)
         spec = glm::vec3(0.3f);
         shin = 64.0f;
     }
-    else if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS && txtr.compare("data/container.png") != 0)
-    {
+    else if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS && txtr.compare("data/container.png") != 0) {
         changed = true;
         txtr = "data/container.png";
         containerTexture = loadTexture(txtr.c_str(), true);
     }
-    else if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS && txtr.compare("data/triangle.jpg") != 0)
-    {
+    else if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS && txtr.compare("data/triangle.jpg") != 0) {
         changed = true;
         txtr = "data/triangle.jpg";
         containerTexture = loadTexture(txtr.c_str(), true);
     }
-    else if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS && txtr.compare("data/colorFloor.jpg") != 0)
-    {
+    else if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS && txtr.compare("data/colorFloor.jpg") != 0) {
         changed = true;
         txtr = "data/colorFloor.jpg";
         containerTexture = loadTexture(txtr.c_str(), true);
     }
 }
 
-
-unsigned int OpenGLManager::loadTexture(char const* path, bool gammaCorrection)
-{
+//Function that loads the local texture files into the program
+unsigned int OpenGLManager::loadTexture(char const* path, bool gammaCorrection) {
     unsigned int textureID;
     glGenTextures(1, &textureID);
 
     int width, height, nrComponents;
     unsigned char* data = stbi_load(path, &width, &height, &nrComponents, 0);
-    if (data)
-    {
+    if (data) {
         GLenum internalFormat;
         GLenum dataFormat;
-        if (nrComponents == 1)
-        {
+        if (nrComponents == 1) {
             internalFormat = dataFormat = GL_RED;
         }
-        else if (nrComponents == 3)
-        {
+        else if (nrComponents == 3) {
             internalFormat = gammaCorrection ? GL_SRGB : GL_RGB;
             dataFormat = GL_RGB;
         }
-        else if (nrComponents == 4)
-        {
+        else if (nrComponents == 4) {
             internalFormat = gammaCorrection ? GL_SRGB_ALPHA : GL_RGBA;
             dataFormat = GL_RGBA;
         }
@@ -610,8 +574,7 @@ unsigned int OpenGLManager::loadTexture(char const* path, bool gammaCorrection)
 
         stbi_image_free(data);
     }
-    else
-    {
+    else {
         std::cout << "Texture failed to load at path: " << path << std::endl;
         stbi_image_free(data);
     }

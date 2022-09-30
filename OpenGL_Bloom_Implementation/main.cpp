@@ -2,8 +2,7 @@
 //Read Project Report for detailed information about Acknowledgements
 #include "OpenGLManager.h"
 
-int main()
-{
+int main() {
     OpenGLManager manager;
     manager.Start();
     return 0;
