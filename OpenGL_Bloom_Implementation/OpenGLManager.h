@@ -19,6 +19,9 @@
 #include <algorithm>
 #include <vector>
 #include <array>
+/*
+* This class maintains all OpenGL related content. 
+*/
 class OpenGLManager {
 public:
 	OpenGLManager();

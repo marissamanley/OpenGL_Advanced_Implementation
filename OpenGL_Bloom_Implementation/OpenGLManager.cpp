@@ -6,6 +6,7 @@
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
+//Default input values
 bool bloom = true;
 bool bloomKeyPressed = false;
 bool halo = false;
@@ -18,7 +19,6 @@ glm::vec3 amb(0.04f);
 glm::vec3 diff(0.4f);
 glm::vec3 spec(0.7f);
 float shin = 128.0f;
-
 std::string txtr = "data/container.png";
 
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
@@ -155,6 +155,7 @@ void OpenGLManager::Start() {
             std::cout << "Framebuffer not complete!" << std::endl;
     }
 
+    //Instantiates all light objects and places them within a vector of vec3's
     std::vector<glm::vec3> lightPositions;
     lightPositions.push_back(glm::vec3(0.0f, 1.5f, 1.5f));
     lightPositions.push_back(glm::vec3(-4.0f, 0.5f, -3.0f));
@@ -178,6 +179,7 @@ void OpenGLManager::Start() {
     shaderBloomFinal.setInt("bloomBlur", 1);
     shaderBloomFinal.setInt("noBlur", 2);
 
+    // Render loop
     while (!glfwWindowShouldClose(window)) {
         float currentFrame = static_cast<float>(glfwGetTime());
         deltaTime = currentFrame - lastFrame;
@@ -190,6 +192,8 @@ void OpenGLManager::Start() {
 
         glBindFramebuffer(GL_FRAMEBUFFER, hdrFBO);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        // Updates the camera location every tick
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         glm::mat4 model = glm::mat4(1.0f);
