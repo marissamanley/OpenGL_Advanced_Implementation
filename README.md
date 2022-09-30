@@ -1,5 +1,25 @@
 # OpenGL Bloom Implementation
 
+### Compiling Guide for Visual Studio 2019 on Windows:
+
+1. Download `OpenGL_Bloom_Implementation.zip` and extract the contents of the file.
+2. Open the `OpenGL_Bloom_Implementation.sln` file through Visual Studio 2019 and execute the project using the Local Windows Debugger button.
+
+### Operation Guide:
+Use WASD and Mouse to traverse the scene.   
+Halo toggle (Press H)  
+Bloom toggle (Press Space)  
+Exposure(Q and E): 0 to 1  
+
+To change object material, press one of the following numbers:  
+1. Chrome  
+2. Plastic  
+3. Rubber  
+To change object texture, press one of the following numbers:  
+4. Wooden container  
+5. Black and White Triangles  
+6. Colorful Triangles  
+
 ### Features
 1. **Walking camera** - functioning properly  
 Camera has the ability to move around in the 3D scene by pressing the WASD keys as
