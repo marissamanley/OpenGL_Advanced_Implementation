@@ -21,6 +21,7 @@ glm::vec3 spec(0.7f);
 float shin = 128.0f;
 std::string txtr = "data/container.png";
 
+//Camera data
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
@@ -308,7 +309,6 @@ void OpenGLManager::Start() {
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-
     glfwTerminate();
     return;
 }

@@ -20,7 +20,8 @@
 #include <vector>
 #include <array>
 /*
-* This class maintains all OpenGL related content. 
+* This class maintains all OpenGL related content. The window render loop takes place within
+* the Start() function, and all input is handled within the processInput() function.
 */
 class OpenGLManager {
 public:
