@@ -8,7 +8,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 bool bloom = true;
 bool bloomKeyPressed = false;
-bool halo = true;
+bool halo = false;
 bool haloKeyPressed = false;
 float exposure = 1.0f;
 
@@ -30,7 +30,6 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 unsigned int containerTexture;
-
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
@@ -77,6 +76,7 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
 
 OpenGLManager::OpenGLManager() {}
 
+// Function that instantiates the OpenGL output window and completes the render loop.
 void OpenGLManager::Start() {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
