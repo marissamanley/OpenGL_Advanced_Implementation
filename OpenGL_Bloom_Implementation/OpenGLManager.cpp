@@ -1,4 +1,4 @@
-//GLFW Window creation, camera class, and shader class acquired from LearnOpenGL.com
+//GLFW Window creation, cube/plane rendering, camera class, and shader class acquired from LearnOpenGL.com
 //Read Project Report for detailed information about Acknowledgments
 #define GLFW_INCLUDE_NONE
 #define STB_IMAGE_IMPLEMENTATION
@@ -198,8 +198,7 @@ void OpenGLManager::Start() {
         shader.setMat4("view", view);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, floorTexture);
-        for (unsigned int i = 0; i < lightPositions.size(); i++)
-        {
+        for (unsigned int i = 0; i < lightPositions.size(); i++) {
             shader.setVec3("lights[" + std::to_string(i) + "].Position", lightPositions[i]);
             glm::vec3 diffuseColor = lightColors[i] * glm::vec3(0.8f);
             glm::vec3 ambientColor = diffuseColor * glm::vec3(0.1f);
