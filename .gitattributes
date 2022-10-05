@@ -1,1 +1,1 @@
-*.h *.c glad.c glad.h linguist-detectable=false
+*.h *.c /include linguist-detectable=false
