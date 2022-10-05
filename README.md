@@ -3,7 +3,9 @@
 ### Compiling Guide for Visual Studio 2019 on Windows:
 
 1. Download `OpenGL_Bloom_Implementation.zip` and extract the contents of the file.
-2. Open the `OpenGL_Bloom_Implementation.sln` file through Visual Studio 2019 and execute the project using the Local Windows Debugger button after switching to the `Release` Configuration to the right of the Local Windows Debugger button.
+2. Open the `OpenGL_Bloom_Implementation.sln` file through Visual Studio 2019 and execute the project using the Local Windows Debugger button after switching to the `Release` Configuration to the left of the Local Windows Debugger button.  
+**NOTE**: Visual Studio 2019 will need the Windows desktop development with C++ IDE
+
 
 ### Operation Guide:
 Use WASD and Mouse to traverse the scene.   
@@ -12,13 +14,14 @@ Bloom toggle (Press Space)
 Exposure(Q and E): 0 to 1  
 
 To change object material, press one of the following numbers:  
-1. Chrome  
-2. Plastic  
-3. Rubber  
+1 Chrome  
+2 Plastic  
+3 Rubber  
+
 To change object texture, press one of the following numbers:  
-4. Wooden container  
-5. Black and White Triangles  
-6. Colorful Triangles  
+4 Wooden container  
+5 Black and White Triangles  
+6 Colorful Triangles  
 
 ### Features
 1. **Walking camera** - functioning properly  
