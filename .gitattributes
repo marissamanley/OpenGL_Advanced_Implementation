@@ -1,1 +1,1 @@
-*.h *.c /include linguist-detectable=false
+*.h OpenGL_Bloom_Implementation/include/ linguist-detectable=false
