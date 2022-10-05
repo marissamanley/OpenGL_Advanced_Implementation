@@ -1,1 +1,2 @@
-*.h OpenGL_Bloom_Implementation/include/ linguist-detectable=false
+* linguist-vendored
+*.c++ linguist-vendored=false
